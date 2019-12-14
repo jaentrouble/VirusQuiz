@@ -19,7 +19,6 @@ class B19 (Parvovirus) :
     def __init__ (self) :
         Parvovirus.__init__(self)
         self.symptom = ['Facial erythema'] #감염홍반증
-        self.DNA = None
         self.infection = 'very common'
         self.immunity = 'once infected immune lifetime'
 
