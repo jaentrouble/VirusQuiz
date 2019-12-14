@@ -9,7 +9,7 @@ class Parvovirus (virus.Virus) :
         self.envelope = False
         self.capsid = True
         self.pH_range = [3.0, 9.0]
-        self.temp_limit = 56
+        self.survive_temp = 56
         self.other_names = ['fifth disease']
         self.subvirus = [B19]
 
@@ -150,3 +150,36 @@ class Poxvirus(virus.Virus) :
         virus.Virus.__init__(self)
         self.gene = virus.DNA()
         self.strand = 2
+        self.envelope = True
+        self.coremembrane = True #instead of capsid, double membrane
+        self.gene_length = (130,300)
+        self.size = 'Can be seen by light microscope'
+        self.enzymes = {'DNA_dep_RNA_polymerase' : virus.Enzyme()}
+        self.infect_route = ['air']
+        self.infectious = 'Very infectious'
+        self.latent_period = (5,17) # days
+
+    def infection(self, host : virus.Host) :
+        host.infected.extend(['upper respiratory tract'])
+        self.replication()
+        self.migrate(['lymph',
+                      'viremia'])
+        self.migrate(['dermis',
+                      'internal organs'])
+        self.symptom.append('pock')
+        self.migrate(['secondary viremia'])
+        if host.luck :
+            host.survive()
+            host.symptom = [] #후유증 없음
+        else :
+            host.die()
+
+    def replication(self, host : virus.Host) :
+        if self.place == host.cytosol :
+            self.envelope = False
+            self.enzymes['uncoatase'] = self.enzymes['DNA_dep_RNA_polymerase'].do('uncoatase')
+            self.coremembrane = False
+            self.enzymes['DNA polymerase'] = self.enzymes['DNA_dep_RNA_polymerase'].do('DNA polymerase')
+            self.enzymes['DNA polymerase'].do(self.gene)
+
+###################################################################

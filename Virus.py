@@ -10,6 +10,14 @@ class RNA() :
 class Protein() :
     pass
 
+class Enzyme() :
+    def __init__(self) :
+        pass
+
+    def do(self, input) :
+        output = None
+        return output
+
 class Virus(pygame.sprite.DirtySprite) :
     def __init__(self) :
         pygame.sprite.DirtySprite.__init__(self)
@@ -34,6 +42,13 @@ class Host(pygame.sprite.DirtySprite) :
         self.infected = []
         self.organ = Organ()
         self.immunity = 'Good'
+        self.luck = True
+
+    def survive(self):
+        pass
+
+    def die(self):
+        pass
 
     def lysis(self) :
         pass
