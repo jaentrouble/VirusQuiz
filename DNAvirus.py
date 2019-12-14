@@ -1,10 +1,12 @@
 import Virus as virus
+import random
 
 class Parvovirus (virus.Virus) :
     def __init__ (self) :
         virus.Virus.__init__(self)
         self.gene = virus.DNA()
         self.strand = 1
+        self.sense = random.choice([-1,1]) # becomes dsDNA anyway, so not important
         self.gene_length = (5,5)   #kb
         self.envelope = False
         self.capsid = True

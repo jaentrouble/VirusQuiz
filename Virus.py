@@ -1,11 +1,20 @@
 import pygame
 import math
 
+def bind(*args) :
+    pass
+
 class DNA() :
     pass
 
 class RNA() :
-    pass
+    def __init__(self) :
+        self.segmented = False
+        self.segment = None
+    
+    def translate(self, something) :
+        newthing = None
+        return newthing
 
 class Protein() :
     pass
@@ -43,6 +52,7 @@ class Host(pygame.sprite.DirtySprite) :
         self.organ = Organ()
         self.immunity = 'Good'
         self.luck = True
+        self.surface_protein = {}
 
     def survive(self):
         pass
@@ -51,6 +61,9 @@ class Host(pygame.sprite.DirtySprite) :
         pass
 
     def lysis(self) :
+        pass
+
+    def exocytosis(self, something) :
         pass
 
 class Organ() :
