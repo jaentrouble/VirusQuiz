@@ -148,7 +148,7 @@ class Picornavirus(virus.Virus) :
         self.sense = 1
         self.gene_length = (7.2, 8.5) #kb
         self.envelope = False
-        self.capsid = False
+        self.capsid = True
         self.IRES = virus.RNA() # Translation factor
         self.subvirus = [Poliovirus,
                          Coxsackievirus,
